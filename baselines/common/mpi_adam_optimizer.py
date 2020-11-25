@@ -1,5 +1,5 @@
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from baselines.common import tf_util as U
 from baselines.common.tests.test_with_mpi import with_mpi
 from baselines import logger

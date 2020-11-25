@@ -20,7 +20,7 @@ def sync_from_root(sess, variables, comm=None):
       variables: all parameter variables including optimizer's
     """
     if comm is None: comm = MPI.COMM_WORLD
-    import tensorflow as tf
+    import tensorflow.compat.v1 as tf
     values = comm.bcast(sess.run(variables))
     sess.run([tf.assign(var, val)
         for (var, val) in zip(variables, values)])

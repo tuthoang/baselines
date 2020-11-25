@@ -1,5 +1,5 @@
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from baselines.a2c import utils
 from baselines.a2c.utils import conv, fc, conv_to_fc, batch_to_seq, seq_to_batch
 from baselines.common.mpi_running_mean_std import RunningMeanStd
@@ -43,7 +43,7 @@ def build_impala_cnn(unscaled_images, depths=[16,32,32], **conv_kwargs):
         return tf.layers.conv2d(out, depth, 3, padding='same', name='layer_' + get_layer_num_str())
 
     def residual_block(inputs):
-        depth = inputs.get_shape()[-1].value
+        depth = inputs.get_shape()[-1]
 
         out = tf.nn.relu(inputs)
 
